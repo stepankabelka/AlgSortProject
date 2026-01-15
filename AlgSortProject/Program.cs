@@ -9,32 +9,23 @@ namespace AlgSortProject
         private static Stopwatch stopwatch = new Stopwatch();
         static void Main(string[] args)
         {
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
-            //string[] obsah = { "10", "7", "8", "9", "1", "5" };
-            //stopwatch.Start();
-
-            //selectionSort(Array.ConvertAll(obsah, int.Parse));
-            //foreach (string val in obsah)
-            //{
-            //    Console.Write(val + " ");
-
-            //}
+            
             //Console.WriteLine($"Čas: {stopwatch.ElapsedMilliseconds} m");
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
+            string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             //string[] obsah = { "170", "-45", "75", "-90", "802", "24", "-2", "66" };
             //int[] arr1 = { 170, -45, 75, -90, 802, 24, -2, 66 };
-            string[] obsah = File.ReadAllLines("random_words_10M.txt");
+            //string[] obsah = File.ReadAllLines("random_words_10M.txt");
             //string[] obsah = { "zzzz", "ab", "acdz", "hmmm", "bab" };
-            //int[] arr = Array.ConvertAll(obsah, int.Parse);
+            int[] arr = Array.ConvertAll(obsah, int.Parse);
             int n = obsah.Length;
             //int n1 = arr1.Length;
             stopwatch.Start();
-            //selectionSort(arr);
-            selectionSortStrings(obsah);
+            selectionSort(arr);
+            //selectionSortStrings(obsah);
             stopwatch.Stop();
             Console.WriteLine($"Čas: {stopwatch.ElapsedMilliseconds / 1000} s");
             //print(arr, 6);
-            printStrings(obsah, n);
+            //printStrings(obsah, n);
         }
         public static void print(int[] arr, int n)
         {
@@ -53,28 +44,36 @@ namespace AlgSortProject
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
-                int min_idx = i;
-                for (int j = i + 1; j < n; j++)
+                if (TimeCheckStrings(arr))
                 {
-                    if (string.Compare(arr[j], arr[min_idx]) < 0)
+                    int min_idx = i;
+                    for (int j = i + 1; j < n; j++)
                     {
-                        min_idx = j;
+                        if (string.Compare(arr[j], arr[min_idx]) < 0)
+                        {
+                            min_idx = j;
+                        }
                     }
+                    string temp = arr[i];
+                    arr[i] = arr[min_idx];
+                    arr[min_idx] = temp;
                 }
-                string temp = arr[i];
-                arr[i] = arr[min_idx];
-                arr[min_idx] = temp;
+                else
+                {
+                    i = n;
+
+                }
             }
         }
         static void selectionSort(int[] arr)
-            {
+        {
             
 
                 int n = arr.Length;
                 for (int i = 0; i < n - 1; i++)
                 {
-
-
+                if(TimeCheck(arr))
+                {
                     int min_idx = i;
 
 
@@ -92,6 +91,13 @@ namespace AlgSortProject
                     arr[i] = arr[min_idx];
                     arr[min_idx] = temp;
                 }
+                else
+                {
+                    i= n;
+                }
+            }
+
+                
         }
         public static bool TimeCheck(int[] arr)
         {

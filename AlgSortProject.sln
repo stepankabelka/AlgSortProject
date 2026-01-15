@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36717.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectionSort", "AlgSortProject\SelectionSort.csproj", "{8AC8592A-E91E-4C29-9FB7-BBBC5BEE119B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleSort", "..\BubbleSort\BubbleSort\BubbleSort.csproj", "{E11EA8F0-A71A-192D-68E0-4077E5C1654C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertionSort", "InsertionSort\InsertionSort.csproj", "{4CA786B1-52C3-4BD1-BEE1-F1A5FE3A2375}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heapsort", "Heapsort\Heapsort.csproj", "{DF076340-7711-4879-AFEF-18C4861ACA0E}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSort", "QuickSort\QuickSort.csproj", "{8BEDEA86-3CE6-4E3E-90B1-8D4C2545EF0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixSort", "RadixSort\RadixSort.csproj", "{742ED70C-C016-427C-BA27-A26A152E9FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealBubbleSort", "RealBubbleSort\RealBubbleSort.csproj", "{B717E078-63F1-4AB2-A5A8-9B0D1D0A1D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{8AC8592A-E91E-4C29-9FB7-BBBC5BEE119B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC8592A-E91E-4C29-9FB7-BBBC5BEE119B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC8592A-E91E-4C29-9FB7-BBBC5BEE119B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E11EA8F0-A71A-192D-68E0-4077E5C1654C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E11EA8F0-A71A-192D-68E0-4077E5C1654C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E11EA8F0-A71A-192D-68E0-4077E5C1654C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E11EA8F0-A71A-192D-68E0-4077E5C1654C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CA786B1-52C3-4BD1-BEE1-F1A5FE3A2375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CA786B1-52C3-4BD1-BEE1-F1A5FE3A2375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA786B1-52C3-4BD1-BEE1-F1A5FE3A2375}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{742ED70C-C016-427C-BA27-A26A152E9FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742ED70C-C016-427C-BA27-A26A152E9FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742ED70C-C016-427C-BA27-A26A152E9FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B717E078-63F1-4AB2-A5A8-9B0D1D0A1D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B717E078-63F1-4AB2-A5A8-9B0D1D0A1D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B717E078-63F1-4AB2-A5A8-9B0D1D0A1D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B717E078-63F1-4AB2-A5A8-9B0D1D0A1D8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,12 +7,7 @@ namespace Heapsort
         static void Main(string[] args)
         {
 
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
-            //var watch = Stopwatch.StartNew();
-
-            //heapSort(new List<int>(Array.ConvertAll(obsah, int.Parse)));
-            //watch.Stop();
-            //Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 60000} m");
+           
             var watch = Stopwatch.StartNew();
             //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             //string[] obsah = { "170", "-45", "75", "-90", "802", "24", "-2", "66" };

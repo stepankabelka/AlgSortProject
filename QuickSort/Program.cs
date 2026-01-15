@@ -4,16 +4,11 @@ namespace QuickSort
 {
     internal class Program
     {
+        static Stopwatch stopwatch = new Stopwatch();
         static void Main(string[] args)
         {
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
-            //int n = obsah.Length;
-            //var watch = Stopwatch.StartNew();
-
-            //quickSortInt(Array.ConvertAll(obsah,int.Parse), 0, n - 1);
-            //watch.Stop();
-            //Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 60000} m");
-            var watch = Stopwatch.StartNew();
+           
+            stopwatch.Start();
             //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             string[] obsah = File.ReadAllLines("random_words_10M.txt");
             //string[] obsah = { "zzzz", "ab", "acdz", "hmmm", "bab" };
@@ -24,8 +19,8 @@ namespace QuickSort
             //int n1 = arr1.Length;
             //quickSortInt(arr, 0, n - 1);
             quickSortStrings(obsah, 0, n - 1);
-            watch.Stop();
-            Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 1000} s");
+            stopwatch.Stop();
+            Console.WriteLine($"Čas: {stopwatch.ElapsedMilliseconds / 1000} s");
             //print(arr, 6);
             //printStrings(obsah, n);
 
@@ -46,6 +41,10 @@ namespace QuickSort
         {
             if (low < high)
             {
+                if (TimeCheckStrings(arr))
+                {
+                    return;
+                }
                 int pi = partitionStrings(arr, low, high);
                 quickSortStrings(arr, low, pi - 1);
                 quickSortStrings(arr, pi + 1, high);
@@ -53,8 +52,10 @@ namespace QuickSort
         }
         static void quickSortInt(int[] arr, int low, int high)
         {
-            if (low < high)
+            
+                if (low < high)
             {
+
 
                 int pi = partition(arr, low, high);
 
@@ -115,8 +116,26 @@ namespace QuickSort
             arr[i] = arr[j];
             arr[j] = temp;
         }
+
         
-        
+        public static bool TimeCheckStrings(string[] arr)
+        {
+            if (stopwatch.Elapsed > TimeSpan.FromSeconds(50))
+            {
+                Console.WriteLine("Sorting aborted: Time limit exceeded.");
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    if (string.Compare(arr[i], arr[i + 1]) > 0)
+                    {
+                        Console.WriteLine($"Code reached {i * 100.0 / arr.Length:F2}%");
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
     }
 
 }

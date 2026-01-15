@@ -6,12 +6,7 @@ namespace MergeSort
     {
         static void Main(string[] args)
         {
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
-            //var watch = Stopwatch.StartNew();
-
-            //mergeSort(Array.ConvertAll(obsah, int.Parse), 0, obsah.Length - 1);
-            //watch.Stop();
-            //Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 60000} m");
+            
             var watch = Stopwatch.StartNew();
             //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             string[] obsah = File.ReadAllLines("random_words_10M.txt");

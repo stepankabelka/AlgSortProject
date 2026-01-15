@@ -8,12 +8,7 @@ namespace InsertionSort
 
         static void Main(string[] args)
         {
-            //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
-            //var watch = Stopwatch.StartNew();
-
-            //insertionSort(Array.ConvertAll(obsah, int.Parse));
-            //watch.Stop();
-            //Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 60000} m");
+            
             stopwatch.Start();
             //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             string[] obsah = File.ReadAllLines("random_words_10M.txt");
@@ -28,7 +23,7 @@ namespace InsertionSort
             stopwatch.Stop();
             Console.WriteLine($"Čas: {stopwatch.ElapsedMilliseconds / 1000} s");
             //print(arr, 6);
-            printStrings(obsah, n);
+            //printStrings(obsah, n);
         }
         public static void printStrings(string[] arr, int n)
         {
@@ -44,7 +39,7 @@ namespace InsertionSort
         }
         public static bool TimeCheckStrings(string[] arr)
         {
-            if (stopwatch.Elapsed > TimeSpan.FromHours(1))
+            if (stopwatch.Elapsed > TimeSpan.FromSeconds(3))
             {
                 Console.WriteLine("Sorting aborted: Time limit exceeded.");
                 for (int i = 0; i < arr.Length - 1; i++)
@@ -52,11 +47,11 @@ namespace InsertionSort
                     if (string.Compare(arr[i], arr[i + 1]) > 0)
                     {
                         Console.WriteLine($"Code reached {i * 100.0 / arr.Length:F2}%");
-                        return false;
+                        return true;
                     }
                 }
             }
-            return true;
+            return false;
         }
         public static bool TimeCheck(int[] arr)
         {
@@ -68,12 +63,12 @@ namespace InsertionSort
                     if (arr[i] > arr[i + 1])
                     {
                         Console.WriteLine($"Code reached {i / 100000}%");
-                        return false;
+                        return true;
 
                     }
                 }
             }
-            return true;
+            return false;
 
         }
 
@@ -82,7 +77,8 @@ namespace InsertionSort
             int n = arr.Length;
             for (int i = 1; i < n; ++i)
             {
-                TimeCheckStrings(arr);
+                if (TimeCheckStrings(arr))
+                    break;
                 string key = arr[i];
                 int j = i - 1;
 
@@ -100,7 +96,10 @@ namespace InsertionSort
             int n = arr.Length;
             for (int i = 1; i < n; ++i)
             {
-                TimeCheck(arr);
+                if (TimeCheck(arr))
+                
+                    break;
+                
                 int key = arr[i];
                 int j = i - 1;
 

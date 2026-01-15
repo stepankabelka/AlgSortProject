@@ -10,15 +10,17 @@ namespace RadixSort
             //string[] obsah = File.ReadAllLines("random_integers_10M.txt");
             //string[] obsah = { "170", "-45", "75", "-90", "802", "24", "-2", "66" };
             //int[] arr1 = { 170, -45, 75, -90, 802, 24, -2, 66 };
-            //string[] obsah = File.ReadAllLines("random_words_10M.txt");
-            string[] obsah = { "zzzz", "ab", "acdz", "hmmm", "bab" };
-            int[] arr = Array.ConvertAll(obsah, int.Parse);
+            string[] obsah = File.ReadAllLines("random_words_10M.txt");
+            //string[] obsah = { "zzzz", "ab", "acdz", "hmmm", "bab" };
+            //int[] arr = Array.ConvertAll(obsah, int.Parse);
             int n = obsah.Length;
             //int n1 = arr1.Length;
             //radixsort(arr, n);
-            
+            radixsortStrings(obsah, n);
+
             watch.Stop();
             Console.WriteLine($"Čas: {watch.ElapsedMilliseconds / 1000} s");
+            //printStrings(obsah, n);
         }
 
         public static void print(int[] arr, int n)
@@ -49,15 +51,8 @@ namespace RadixSort
         {
             Array.Sort(arr);
         }
-        public static void quickSortStrings(string[] arr, int low, int high)
-        {
-            if (low < high)
-            {
-                int pi = partitionStrings(arr, low, high);
-                quickSortStrings(arr, low, pi - 1);
-                quickSortStrings(arr, pi + 1, high);
-            }
-        }
+        
+        
         public static void countSort(int[] arr, int n, int exp)
         {
             int[] output = new int[n];
@@ -87,7 +82,16 @@ namespace RadixSort
             for (i = 0; i < n; i++)
                 arr[i] = output[i];
         }
+        public static void radixsortStrings(string[] arr, int n)
+        {
+            if (arr == null || arr.Length <= 1)
+                return;
 
+            string[] aux = new string[arr.Length];
+            msdSort(arr, aux, 0, arr.Length - 1, 0);
+        }
+
+        
         public static void radixsort(int[] arr, int n)
         {
             int negCount = 0;
@@ -136,26 +140,44 @@ namespace RadixSort
                 arr[idx++] = positives[i];
         }
 
-        static int partitionStrings(string[] arr, int low, int high)
+        private static void msdSort(string[] arr, string[] aux, int lo, int hi, int d)
         {
-            string pivot = arr[high];
-            int i = low - 1;
+            if (hi <= lo)
+                return;
 
-            for (int j = low; j <= high - 1; j++)
+            int R = 256; 
+            int[] count = new int[R + 2];
+
+            for (int i = lo; i <= hi; i++)
             {
-                if (string.Compare(arr[j], pivot) < 0)
-                {
-                    i++;
-                    string temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+                int c = charAt(arr[i], d);
+                count[c + 2]++;
             }
-            string temp2 = arr[i + 1];
-            arr[i + 1] = arr[high];
-            arr[high] = temp2;
-            return i + 1;
+
+            for (int r = 0; r < R + 1; r++)
+                count[r + 1] += count[r];
+
+            for (int i = lo; i <= hi; i++)
+            {
+                int c = charAt(arr[i], d);
+                aux[count[c + 1]++] = arr[i];
+            }
+
+            for (int i = lo; i <= hi; i++)
+                arr[i] = aux[i - lo];
+
+            for (int r = 0; r < R; r++)
+                msdSort(arr, aux, lo + count[r], lo + count[r + 1] - 1, d + 1);
         }
+
+        private static int charAt(string s, int d)
+        {
+            if (d < s.Length)
+                return s[d];
+            else
+                return -1;
+        }
+
     }
 
 
